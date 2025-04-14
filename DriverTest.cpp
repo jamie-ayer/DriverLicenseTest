@@ -10,21 +10,15 @@ void print_score(vector<int>);
 int main(){
 
     char answers[20] = { 'B', 'D', 'A', 'A', 'C', 'A', 'B', 'A', 'C', 'D', 'B', 'C', 'D', 'A', 'D', 'C', 'C', 'B', 'D', 'A' };
-    char testArray[20] = { 'B', 'D', 'A', 'D', 'C', 'A', 'B', 'A', 'C', 'D', 'B', 'C', 'D', 'A', 'D', 'C', 'C', 'B', 'D', 'A' };
-    //char testArray[20] = { 'C', 'D', 'D', 'A', 'B', 'D', 'C', 'A', 'B', 'D', 'D', 'A', 'C', 'B', 'D', 'C', 'C', 'D', 'B', 'A' };
     char userAnswers[20];
     vector<int> userResults;
     unsigned int i;
 
-    /*
+    
     for(i = 0; i < 20; i++)
         userAnswers[i] = user_input(i);
 
-    for(i = 0; i < 20; i++)
-        cout << i+1 << ": " << userAnswers[i] << " | ";
-    */
-
-    userResults = user_score(answers, testArray);
+    userResults = user_score(answers, userAnswers);
     
     print_score(userResults);
 
@@ -48,8 +42,9 @@ char user_input(unsigned int i){
     return c;
 }
 
-//Takes in two char arrays with pointers gets the score and returns list of incorrect problems with a vector
+//Takes in two char arrays as pointers, gets the score and returns list of incorrect problems with a vector
 //the score is appeneded to the end to be popped off later.
+//I was going to try to return another dynamic array with realloc but figured that we only needed to use arrays for the answers and user answers.
 vector<int> user_score(const char* answers, const char* userAnswers){
 
     int score = 0;
